@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-export const SearchFeed = () => {
-  return (
-    <div>SearchFeed</div>
-  )
-}
+const SearchFeed = () => (
+  <div>SearchFeed</div>
+);
 
-
+export default SearchFeed;
