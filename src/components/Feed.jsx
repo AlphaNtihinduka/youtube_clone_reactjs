@@ -2,6 +2,7 @@
 
 import { Box, Stack, Typography } from '@mui/material';
 import SideBar from './SideBar';
+import { Videos } from './Videos';
 
 const Feed = () => (
   <Stack
@@ -28,6 +29,28 @@ const Feed = () => (
       >
         Copyright. This is designed by Alpha
       </Typography>
+    </Box>
+
+    <Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
+      <Typography
+        variant="h4"
+        fontWeight="bold"
+        mb={2}
+        sx={{
+          color: 'white',
+        }}
+      >
+        {' '}
+        New
+        <span
+          style={{
+            color: '#f31503',
+          }}
+        >
+          Videos
+        </span>
+      </Typography>
+      <Videos videos={[]}/>
     </Box>
 
   </Stack>
