@@ -1,60 +1,72 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Box, Stack, Typography } from '@mui/material';
 import SideBar from './SideBar';
 import Videos from './Videos';
+import { fetchFromAPI } from '../utilis/fetchFromAPI';
 
-const Feed = () => (
-  <Stack
-    sx={{
-      flexDirection: { sx: 'column', md: 'row' },
-    }}
-  >
+const Feed = () => {
+  const [selectedCategory, setSelectedCategory] = useState('New');
 
-    <Box
+  useEffect(() => {
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`);
+  }, [selectedCategory]);
+
+  return (
+    <Stack
       sx={{
-        height: { sx: 'auto', md: '92vh' },
-        borderRight: '1px solid #3d3d3d',
-        px: { sx: 0, md: 2 },
+        flexDirection: { sx: 'column', md: 'row' },
       }}
     >
-      <SideBar />
-      <Typography
-        variant="body2"
-        className="copyright"
-        sx={{
-          mt: 1.5,
-          color: '#fff',
-        }}
-      >
-        Copyright. This is designed by Alpha
-      </Typography>
-    </Box>
 
-    <Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
-      <Typography
-        variant="h4"
-        fontWeight="bold"
-        mb={2}
+      <Box
         sx={{
-          color: 'white',
+          height: { sx: 'auto', md: '92vh' },
+          borderRight: '1px solid #3d3d3d',
+          px: { sx: 0, md: 2 },
         }}
       >
-        {' '}
-        New
-        <span
-          style={{
-            color: '#f31503',
-            marginLeft: '10px',
+        <SideBar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <Typography
+          variant="body2"
+          className="copyright"
+          sx={{
+            mt: 1.5,
+            color: '#fff',
           }}
         >
-          Videos
-        </span>
-      </Typography>
-      <Videos videos={[]} />
-    </Box>
+          Copyright. This is designed by Alpha
+        </Typography>
+      </Box>
 
-  </Stack>
-);
+      <Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={2}
+          sx={{
+            color: 'white',
+          }}
+        >
+          {' '}
+          {selectedCategory}
+          <span
+            style={{
+              color: '#f31503',
+              marginLeft: '10px',
+            }}
+          >
+            Videos
+          </span>
+        </Typography>
+        <Videos videos={[]} />
+      </Box>
+
+    </Stack>
+  );
+};
 
 export default Feed;
