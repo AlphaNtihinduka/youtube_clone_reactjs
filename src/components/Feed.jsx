@@ -2,7 +2,7 @@
 
 import { Box, Stack, Typography } from '@mui/material';
 import SideBar from './SideBar';
-import { Videos } from './Videos';
+import Videos from './Videos';
 
 const Feed = () => (
   <Stack
@@ -45,12 +45,13 @@ const Feed = () => (
         <span
           style={{
             color: '#f31503',
+            marginLeft: '10px',
           }}
         >
           Videos
         </span>
       </Typography>
-      <Videos videos={[]}/>
+      <Videos videos={[]} />
     </Box>
 
   </Stack>
