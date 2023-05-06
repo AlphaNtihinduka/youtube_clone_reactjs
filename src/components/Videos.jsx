@@ -11,9 +11,10 @@ const Videos = ({videos}) => {
       justifyContent="start"
       gap={2}
     >
-      {videos.map((item, id) => {
+      {videos.map((item, idx) => {
         <Box key={idx}>
-
+          {item.id.videoId && <VideoCard video={item}/>}
+          {item.id.channelId && <VideoCard video={item}/>}
         </Box>
       })}
     </Stack>
