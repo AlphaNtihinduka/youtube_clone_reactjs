@@ -1,5 +1,6 @@
 import React from 'react';
 import { Stack } from '@mui/material';
+import { PropTypes } from 'prop-types';
 import { categories } from '../utilis/constants';
 
 const SideBar = ({ selectedCategory, setSelectedCategory }) => (
@@ -42,5 +43,14 @@ const SideBar = ({ selectedCategory, setSelectedCategory }) => (
 
   </Stack>
 );
+
+SideBar.propTypes = {
+  selectedCategory: PropTypes.string,
+  setSelectedCategory: PropTypes.func.isRequired,
+};
+
+SideBar.defaultProps = {
+  selectedCategory: 'New',
+};
 
 export default SideBar;

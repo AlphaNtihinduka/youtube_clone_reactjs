@@ -3,13 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import SideBar from './SideBar';
 import Videos from './Videos';
-import { fetchFromAPI } from '../utilis/fetchFromAPI';
+import fetchFromAPI from '../utilis/fetchFromAPI';
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New');
+  const [videos, setVideos] = useState([])
 
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`);
+    const fetchData = async () => {
+      const data = await fetchFromAPI(`search?part=snippet&q=${selectedCategory}`);
+      setVideos(data?.items || []);
+    };
+    fetchData();
   }, [selectedCategory]);
 
   return (
@@ -62,7 +67,7 @@ const Feed = () => {
             Videos
           </span>
         </Typography>
-        <Videos videos={[]} />
+        <Videos videos={videos} />
       </Box>
 
     </Stack>
