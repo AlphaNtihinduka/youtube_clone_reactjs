@@ -7,7 +7,7 @@ import fetchFromAPI from '../utilis/fetchFromAPI';
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New');
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
