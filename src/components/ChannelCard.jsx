@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { CheckCircle } from '@mui/icons-material';
 import { demoProfilePicture } from '../utilis/constants';
 
-const ChannelCard = ({ channelDetail }) => {
+const ChannelCard = ({ channelDetail, marginTop }) => {
   console.log('channelDetail', channelDetail);
   return (
     <Box sx={{
@@ -19,6 +19,7 @@ const ChannelCard = ({ channelDetail }) => {
       width: { xs: '356px', md: '320px' },
       height: '326px',
       margin: 'auto',
+      marginTop,
 
     }}
     >
@@ -57,7 +58,6 @@ const ChannelCard = ({ channelDetail }) => {
               }}
             />
           </Typography>
-          {channelDetail?.statistics?.subscriberCount}
           <Typography>
             {parseInt(channelDetail?.statistics?.subscriberCount, 10).toLocaleString()}
             {' '}
@@ -71,6 +71,7 @@ const ChannelCard = ({ channelDetail }) => {
 };
 
 ChannelCard.propTypes = {
+  marginTop: PropTypes.string.isRequired,
   channelDetail: PropTypes.shape({
     snippet: PropTypes.shape({
       thumbnails: PropTypes.shape({
