@@ -1,77 +1,49 @@
 import React, { useState, useEffect } from 'react';
 
-import { Box, Stack, Typography } from '@mui/material';
-import SideBar from './SideBar';
+import { Box, Typography } from '@mui/material';
+import { useParams } from 'react-router-dom';
 import Videos from './Videos';
 import fetchFromAPI from '../utilis/fetchFromAPI';
 
-const Feed = () => {
-  const [selectedCategory, setSelectedCategory] = useState('New');
+const SearchFeed = () => {
   const [videos, setVideos] = useState([]);
+  const { searchTerm } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchFromAPI(`search?part=snippet&q=${selectedCategory}`);
+      const data = await fetchFromAPI(`search?part=snippet&q=${searchTerm}`);
       setVideos(data?.items || []);
     };
     fetchData();
-  }, [selectedCategory]);
+  }, [searchTerm]);
 
   return (
-    <Stack
-      sx={{
-        flexDirection: { sx: 'column', md: 'row' },
-      }}
-    >
-
-      <Box
+    <Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
+      <Typography
+        variant="h4"
+        fontWeight="bold"
+        mb={2}
         sx={{
-          height: { sx: 'auto', md: '92vh' },
-          borderRight: '1px solid #3d3d3d',
-          px: { sx: 0, md: 2 },
+          color: 'white',
         }}
       >
-        <SideBar
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
-        <Typography
-          variant="body2"
-          className="copyright"
-          sx={{
-            mt: 1.5,
-            color: '#fff',
+        Search Results for:
+        {}
+        <span
+          style={{
+            color: '#f31503',
+            marginLeft: '10px',
           }}
         >
-          Copyright. This is designed by Alpha
-        </Typography>
-      </Box>
+          {searchTerm}
+        </span>
+        {' '}
+        videos
+      </Typography>
+      <Videos videos={videos} />
+    </Box>
 
-      <Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
-        <Typography
-          variant="h4"
-          fontWeight="bold"
-          mb={2}
-          sx={{
-            color: 'white',
-          }}
-        >
-          {' '}
-          {selectedCategory}
-          <span
-            style={{
-              color: '#f31503',
-              marginLeft: '10px',
-            }}
-          >
-            Videos
-          </span>
-        </Typography>
-        <Videos videos={videos} />
-      </Box>
-
-    </Stack>
   );
 };
 
-export default Feed;
+export default SearchFeed;
