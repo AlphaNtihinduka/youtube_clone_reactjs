@@ -4,11 +4,13 @@ import { PropTypes } from 'prop-types';
 import VideoCard from './VideoCard';
 import ChannelCard from './ChannelCard';
 
-const Videos = ({ videos }) => {
+const Videos = ({ videos, direction }) => {
   console.log('videos: ', videos);
+
+  if (!videos) return 'Loading';
   return (
     <Stack
-      direction="row"
+      direction={direction || 'row'}
       flexWrap="wrap"
       justifyContent="start"
       gap={2}
@@ -25,10 +27,12 @@ const Videos = ({ videos }) => {
 
 Videos.propTypes = {
   videos: PropTypes.string,
+  direction: PropTypes.string,
 };
 
 Videos.defaultProps = {
   videos: [],
+  direction: '',
 };
 
 export default Videos;
