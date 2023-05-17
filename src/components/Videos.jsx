@@ -5,8 +5,6 @@ import VideoCard from './VideoCard';
 import ChannelCard from './ChannelCard';
 
 const Videos = ({ videos, direction }) => {
-  console.log('videos: ', videos);
-
   if (!videos) return 'Loading';
   return (
     <Stack

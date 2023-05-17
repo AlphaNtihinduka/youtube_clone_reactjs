@@ -7,68 +7,65 @@ import PropTypes from 'prop-types';
 import { CheckCircle } from '@mui/icons-material';
 import { demoProfilePicture } from '../utilis/constants';
 
-const ChannelCard = ({ channelDetail, marginTop }) => {
-  console.log('channelDetail', channelDetail);
-  return (
-    <Box sx={{
-      boxShadow: 'none',
-      borderRadius: '20px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: { xs: '356px', md: '320px' },
-      height: '326px',
-      margin: 'auto',
-      marginTop,
+const ChannelCard = ({ channelDetail, marginTop }) => (
+  <Box sx={{
+    boxShadow: 'none',
+    borderRadius: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: { xs: '356px', md: '320px' },
+    height: '326px',
+    margin: 'auto',
+    marginTop,
 
-    }}
-    >
+  }}
+  >
 
-      <Link to={`/channel/${channelDetail?.snippet?.channelId}`}>
-        <CardContent
+    <Link to={`/channel/${channelDetail?.snippet?.channelId}`}>
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        <CardMedia
+          image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+          alt={channelDetail?.snippet?.title}
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            textAlign: 'center',
-            color: '#fff',
+            borderRadius: '50%',
+            height: '180px',
+            width: '180px',
+            mb: '2px',
+            border: '1px solid #e3e3e3',
+          }}
+        />
+        <Typography
+          variant="h6"
+          sx={{
+            textDecoration: 'none',
           }}
         >
-          <CardMedia
-            image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
-            alt={channelDetail?.snippet?.title}
+          {channelDetail?.snippet?.title}
+          <CheckCircle
             sx={{
-              borderRadius: '50%',
-              height: '180px',
-              width: '180px',
-              mb: '2px',
-              border: '1px solid #e3e3e3',
+              fontSize: 12, color: 'gray', ml: '14px',
             }}
           />
-          <Typography
-            variant="h6"
-            sx={{
-              textDecoration: 'none',
-            }}
-          >
-            {channelDetail?.snippet?.title}
-            <CheckCircle
-              sx={{
-                fontSize: 12, color: 'gray', ml: '14px',
-              }}
-            />
-          </Typography>
-          <Typography>
-            {parseInt(channelDetail?.statistics?.subscriberCount, 10).toLocaleString()}
-            {' '}
-            Subscribers
-          </Typography>
-        </CardContent>
-      </Link>
+        </Typography>
+        <Typography>
+          {parseInt(channelDetail?.statistics?.subscriberCount, 10).toLocaleString()}
+          {' '}
+          Subscribers
+        </Typography>
+      </CardContent>
+    </Link>
 
-    </Box>
-  );
-};
+  </Box>
+);
 
 ChannelCard.propTypes = {
   marginTop: PropTypes.string.isRequired,
