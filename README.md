@@ -54,11 +54,11 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Javascript Leaderboard project] <a name="about-project"></a>
+# 📖 [Youtube clone] <a name="about-project"></a>
 
-> This is portfolio application that shows about myself, skills, experiences, projects and resume.
+> This is a youtube clone that enables user navigate with categories and also search for preferred youtube videos
 
-**[Javascript Leaderboard project]** is a...
+**[Youtube clone]** is a...
 
 ## 🛠 Built With <a name="built-with"></a>
 

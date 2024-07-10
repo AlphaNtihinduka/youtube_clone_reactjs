@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Stack } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import VideoCard from './VideoCard';
-import ChannelCard from './ChannelCard';
 
 const Videos = ({ videos, direction }) => {
   if (!videos) return 'Loading';
