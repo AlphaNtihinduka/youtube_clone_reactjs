@@ -3,6 +3,7 @@
 <!--
 HOW TO USE:
 This is an example of how you may give instructions on setting up your project locally.
+[Live demo](https://youtube-alpha.netlify.app/)
 
 Modify this file to match your project and remove sections that don't apply.
 
