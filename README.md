@@ -56,7 +56,7 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 [Youtube clone] <a name="about-project"></a>
 
-> This is a youtube clone that enables user navigate with categories and also search for preferred youtube videos
+> This is a youtube clone that enables user navigate with categories and also search for preferred youtube videos.
 
 **[Youtube clone]** is a...
 
