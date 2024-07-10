@@ -16,6 +16,7 @@ export const logo = 'https://i.ibb.co/94Qp2Xq/youtubelogo.png';
 
 export const categories = [
   { name: 'New', icon: <HomeIcon /> },
+  { name: 'SAP Fiori', icon: <CodeIcon /> },
   { name: 'Coding', icon: <CodeIcon /> },
   { name: 'ReactJS', icon: <CodeIcon /> },
   { name: 'NextJS', icon: <CodeIcon /> },
